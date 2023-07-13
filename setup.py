@@ -6,31 +6,33 @@
     PyScaffold helps you to put up the scaffold of your new Python project.
     Learn more under: https://pyscaffold.org/
 """
-from setuptools import setup, Extension
+from setuptools import setup, Extension, find_packages
 
 import numpy
 
 from Cython.Build import cythonize
-from Cython.Compiler import Options
 
 extensions = [
     Extension(
-        "hello_world",
-        ["src/dependencies/hello_world.pyx"], include_dirs=[numpy.get_include()],
+        name="dependencies.hello_world",
+        sources=["src/UtilsModule/dependencies/hello_world.pyx"], 
+        include_dirs=[numpy.get_include()],
     ),
 ]
 
 
-# This is the function that is executed
 setup(
-    name='CythonTemplate',  # Required
+    name='cython_template',  # Required
 
     # A list of compiler Directives is available at
     # https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html#compiler-directives
 
     # external to be compiled
-    ext_modules=cythonize(extensions, compiler_directives={"language_level": 3, "profile": False}),
+    packages=find_packages(),
+    ext_modules=extensions
 )
+
+#cythonize(extensions, compiler_directives={"language_level": 3, "profile": False}),
 
 if __name__ == "__main__":
     try:
