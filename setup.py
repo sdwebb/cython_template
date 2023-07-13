@@ -22,12 +22,7 @@ extensions = [
 
 
 setup(
-    name='cython_template',  # Required
-
-    # A list of compiler Directives is available at
-    # https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html#compiler-directives
-
-    # external to be compiled
+    name='cython_template',
     packages=find_packages(),
     ext_modules=cythonize(extensions)
 )
