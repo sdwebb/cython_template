@@ -1,5 +1,5 @@
 """
-    Setup file for DU.
+    Setup file for cython_template.
     Use setup.cfg to configure your project.
 
     This file was generated with PyScaffold 4.4.1.
@@ -29,10 +29,8 @@ setup(
 
     # external to be compiled
     packages=find_packages(),
-    ext_modules=extensions
+    ext_modules=cythonize(extensions)
 )
-
-#cythonize(extensions, compiler_directives={"language_level": 3, "profile": False}),
 
 if __name__ == "__main__":
     try:
