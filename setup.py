@@ -14,22 +14,21 @@ from Cython.Build import cythonize
 
 extensions = [
     Extension(
-        name="dependencies.hello_world",
+        name="UtilsModule.dependencies.hello_world",
         sources=["src/UtilsModule/dependencies/hello_world.pyx"], 
-        include_dirs=[numpy.get_include()],
+        include_dirs=[numpy.get_include()]
     ),
 ]
 
 
-setup(
-    name='cython_template',
-    packages=find_packages(),
-    ext_modules=cythonize(extensions)
-)
+#setup(
+#    ext_modules=cythonize(extensions)
+#)
 
 if __name__ == "__main__":
     try:
-        setup(use_scm_version={"version_scheme": "no-guess-dev"})
+        setup(use_scm_version={"version_scheme": "no-guess-dev"},
+              ext_modules=cythonize(extensions))
     except:  # noqa
         print(
             "\n\nAn error occurred while building the project, "
